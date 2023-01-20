@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import NavOptions from "../components/NavOptions";
 
 type Props = {};
 
@@ -12,6 +13,7 @@ const HomeScreen = (props: Props) => {
           source={{ uri: "https://source.unsplash.com/random?car" }}
           style={styles.image}
         ></Image>
+        <NavOptions></NavOptions>
       </View>
     </SafeAreaView>
   );
