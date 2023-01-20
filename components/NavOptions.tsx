@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {};
 
@@ -16,24 +17,32 @@ const DUMMY_DATA = [
     id: "1",
     title: "Get a ride",
     image: "https://source.unsplash.com/random?car",
-    screen: "MapScreen",
+    screen: "Map",
   },
   {
     id: "2",
     title: "Order food",
     image: "https://source.unsplash.com/random?food",
-    screen: "EatScreen",
+    screen: "Eat",
   },
 ];
 
+type Nav = {
+  navigate: (value: string) => void;
+};
+
 const NavOptions = (props: Props) => {
+  const navigation = useNavigation<Nav>();
   return (
     <View>
       <FlatList
         data={DUMMY_DATA}
         horizontal
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.navOptionButton}>
+          <TouchableOpacity
+            style={styles.navOptionButton}
+            onPress={() => navigation.navigate(item.screen)}
+          >
             <View>
               <Image
                 source={{ uri: item.image }}
